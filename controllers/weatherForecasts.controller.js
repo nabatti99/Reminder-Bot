@@ -41,6 +41,7 @@ module.exports.get = async function (request, response, next) {
                   set_attributes: {
                     weatherForecastUrl: link,
                   },
+                  block_names: ["WeatherForecastsDetail"],
                 },
                 {
                   title: "Xem ở Web...",
@@ -60,6 +61,12 @@ module.exports.get = async function (request, response, next) {
 
 module.exports.getDetail = async function (request, response, next) {
   const { weatherForecastUrl } = request.query;
+  if (weatherForecastUrl) {
+    response.json({
+      messages: [{ text: "Lỗi rồi: Không tìm thấy bài viết!" }],
+    });
+  }
+
   const dom = await JSDOM.fromURL(weatherForecastUrl, {
     includeNodeLocations: true,
   });
