@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "jsdom": "^16.3.0",
     "json-server": "^0.16.1",
     "mongoose": "^5.9.5"
   },
