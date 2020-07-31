@@ -20,7 +20,7 @@ module.exports.get = async function (request, response, next) {
 
   const messages = new Array();
 
-  newFeeds.forEach((newFeed, index) => {
+  await newFeeds.forEach((newFeed, index) => {
     const link = newFeeds[index].firstChild.getAttribute("href");
     const text = newFeeds[index].textContent;
 
@@ -58,7 +58,7 @@ module.exports.get = async function (request, response, next) {
     });
   });
 
-  response.json({ messages: messages });
+  response.json({ messages });
 };
 
 module.exports.getDetail = async function (request, response, next) {

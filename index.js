@@ -9,6 +9,7 @@ const Create = require("./controllers/create.controller");
 const Remind = require("./controllers/remind.controller");
 const Delete = require("./controllers/delete.controller");
 const WeatherForecasts = require("./controllers/weatherForecasts.controller");
+const Test = require("./controllers/test.controller");
 
 require("./database.config");
 
@@ -25,6 +26,9 @@ App.get("/delete/all", Delete.all);
 
 App.get("/weatherForecasts", WeatherForecasts.get);
 App.get("/weatherForecasts/detail", WeatherForecasts.getDetail);
+
+App.get("/test", Test.get);
+App.get("/test/create", Test.create);
 
 const PORT = process.env.PORT;
 
