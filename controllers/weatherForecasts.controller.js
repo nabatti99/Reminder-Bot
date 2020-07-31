@@ -36,10 +36,10 @@ module.exports.get = async function (request, response, next) {
             {
               media_type: "image",
               url: imgUrl,
-              button: [
+              buttons: [
                 {
                   title: "Xem ở đây...",
-                  type: "show-block",
+                  type: "show_block",
                   set_attributes: {
                     weatherForecastUrl: link,
                   },
@@ -47,7 +47,7 @@ module.exports.get = async function (request, response, next) {
                 },
                 {
                   title: "Xem ở Web...",
-                  type: "web-url",
+                  type: "web_url",
                   url: link,
                 },
               ],
