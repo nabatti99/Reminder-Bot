@@ -18,14 +18,16 @@ module.exports.get = async function (request, response, next) {
     document.querySelectorAll(".img-weather-location.fix-img-weather-location")
   );
 
-  const newFeedsList = newFeeds.map((newFeed, index) => {
+  const messages = new Array();
+
+  newFeeds.forEach((newFeed, index) => {
     const link = newFeeds[index].firstChild.getAttribute("href");
     const text = newFeeds[index].textContent;
 
     const imgUrl = newFeedImgs[index].firstChild.getAttribute("src");
 
-    return {
-      text,
+    messages.push({ text });
+    messages.push({
       attachment: {
         type: "template",
         payload: {
@@ -53,10 +55,10 @@ module.exports.get = async function (request, response, next) {
           ],
         },
       },
-    };
+    });
   });
 
-  response.json({ messages: newFeedsList });
+  response.json({ messages: messages });
 };
 
 module.exports.getDetail = async function (request, response, next) {
