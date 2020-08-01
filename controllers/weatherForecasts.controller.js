@@ -26,31 +26,25 @@ module.exports.get = async function (request, response, next) {
 
     const imgUrl = newFeedImgs[index].firstChild.getAttribute("src");
 
-    messages.push({ text });
     messages.push({
       attachment: {
         type: "template",
         payload: {
-          template_type: "media",
-          elements: [
+          template_type: "button",
+          text,
+          buttons: [
             {
-              media_type: "image",
-              url: imgUrl,
-              buttons: [
-                {
-                  title: "Xem ở đây...",
-                  type: "show_block",
-                  set_attributes: {
-                    weatherForecastUrl: link,
-                  },
-                  block_names: ["WeatherForecastsDetail"],
-                },
-                {
-                  title: "Xem ở Web...",
-                  type: "web_url",
-                  url: link,
-                },
-              ],
+              title: "Xem ở đây...",
+              type: "show_block",
+              set_attributes: {
+                weatherForecastUrl: link,
+              },
+              block_names: ["WeatherForecastsDetail"],
+            },
+            {
+              title: "Xem ở Web...",
+              type: "web_url",
+              url: link,
             },
           ],
         },
@@ -63,7 +57,7 @@ module.exports.get = async function (request, response, next) {
 
 module.exports.getDetail = async function (request, response, next) {
   const { weatherForecastUrl } = request.query;
-  if (weatherForecastUrl) {
+  if (!weatherForecastUrl) {
     response.json({
       messages: [{ text: "Lỗi rồi: Không tìm thấy bài viết!" }],
     });
@@ -88,11 +82,9 @@ module.exports.getDetail = async function (request, response, next) {
 
   const textArea = document.querySelector("p>span>span");
   const textContent = textArea.textContent;
-  const textMessages = textContent.split("\n").map((text) => {
-    return { text };
-  });
+  const textMessage = textContent.split("\n").join("\n\n");
 
   response.json({
-    messages: [imgMessage, ...textMessages],
+    messages: [imgMessage, { text: textMessage }],
   });
 };
