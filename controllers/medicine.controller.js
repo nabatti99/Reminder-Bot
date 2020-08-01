@@ -40,7 +40,7 @@ module.exports.get = async function (request, response, next) {
           text,
           buttons: [
             {
-              title: "Xem ở đây...",
+              title: "Xem ở đây",
               type: "show_block",
               set_attributes: {
                 medicineUrl: link,
@@ -48,7 +48,7 @@ module.exports.get = async function (request, response, next) {
               block_names: ["MedicineDetail"],
             },
             {
-              title: "Xem ở Web...",
+              title: "Xem ở Web",
               type: "web_url",
               url: link,
             },

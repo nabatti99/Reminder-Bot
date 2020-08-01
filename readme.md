@@ -24,4 +24,8 @@ Use your bot on [Chatfuel](https://chatfuel.com) to connect with REST API.
 
 `/weatherForecasts/detail?weatherForecastUrl=...` => Get detail Weather Forecast new feeds.
 
+`/medicine?searchValue=...` => Get Medicine Information.
+
+`/medicine/detail?medicineUrl=...` => Get detail Medicine Information.
+
 ## No contributing required
