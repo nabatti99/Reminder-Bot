@@ -1,6 +1,6 @@
 const { JSDOM } = require("jsdom");
 
-const { splitIntoTwoString } = require("../services/utilities");
+const { splitIntoString } = require("../services/utilities");
 
 module.exports.get = async function (request, response, next) {
   const { searchValue } = request.query;
@@ -86,7 +86,6 @@ module.exports.getDetail = async function (request, response, next) {
 
   contains.forEach((contain, index) => {
     const noscriptElement = contain.querySelector("noscript");
-    console.log(noscriptElement);
     if (!noscriptElement) return;
 
     noscriptElement.parentNode.removeChild(noscriptElement);
@@ -102,19 +101,14 @@ module.exports.getDetail = async function (request, response, next) {
   const text1 = contains
     .slice(0, containsSplitIndex)
     .reduce((text, contain) => text.concat("\n", contain.textContent), "");
-  const textMessage1 = splitIntoTwoString(text1);
+  const textMessages1 = splitIntoString(text1).map((text) => ({ text }));
 
   const text2 = contains
     .slice(containsSplitIndex)
     .reduce((text, contain) => text.concat("\n", contain.textContent), "");
-  const textMessage2 = splitIntoTwoString(text2);
+  const textMessages2 = splitIntoString(text2).map((text) => ({ text }));
 
   response.json({
-    messages: [
-      { text: textMessage1.textOutput1 },
-      { text: textMessage1.textOutput2 },
-      { text: textMessage2.textOutput1 },
-      { text: textMessage2.textOutput2 },
-    ],
+    messages: [...textMessages1, ...textMessages2],
   });
 };
