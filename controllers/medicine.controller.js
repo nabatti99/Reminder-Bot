@@ -45,7 +45,7 @@ module.exports.get = async function (request, response, next) {
               set_attributes: {
                 medicineUrl: link,
               },
-              block_names: ["WeatherForecastsDetail"],
+              block_names: ["MedicineDetail"],
             },
             {
               title: "Xem ở Web...",
