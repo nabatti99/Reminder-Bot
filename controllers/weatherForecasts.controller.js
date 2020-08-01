@@ -82,9 +82,19 @@ module.exports.getDetail = async function (request, response, next) {
 
   const textArea = document.querySelector("p>span>span");
   const textContent = textArea.textContent;
-  const textMessage = textContent.split("\n").join("\n\n");
+
+  const textLimited1 = textContent.substring(0, 2000).split("\n");
+  const textLost = textLimited1.pop();
+  const textLimited1After = textLimited1.join("\n\n");
+
+  const textLimited2 = textContent.substring(2000).split("\n").join("\n\n");
+  const textLimited2After = textLost.concat(textLimited2);
 
   response.json({
-    messages: [imgMessage, { text: textMessage }],
+    messages: [
+      imgMessage,
+      { text: textLimited1After },
+      { text: textLimited2After },
+    ],
   });
 };
