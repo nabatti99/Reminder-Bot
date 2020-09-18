@@ -3,7 +3,7 @@ const { JSDOM } = jsdom;
 
 module.exports.get = async function (request, response, next) {
   const dom = await JSDOM.fromURL(
-    "http://nchmf.gov.vn/Kttvsite/vi-VN/1/thoi-tiet-nguy-hiem-5-15.html",
+    "https://thoitietvietnam.gov.vn/Kttv/vi-VN/1/thoi-tiet-nguy-hiem-5-15.html",
     {
       includeNodeLocations: true,
     }
