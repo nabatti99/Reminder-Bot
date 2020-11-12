@@ -80,7 +80,7 @@ module.exports.getDetail = async function (request, response, next) {
     },
   };
 
-  const textArea = document.querySelector("p>span>span");
+  const textArea = document.querySelector(".text-content-news span>span");
   const textContent = textArea.textContent;
 
   const textLimited1 = textContent.substring(0, 2000).split("\n");
