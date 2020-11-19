@@ -7,7 +7,7 @@ module.exports.getTitle = async function (request, response, next) {
   if (!queryTitleString || !subject)
     next(new Error("mi thiếu chuỗi tìm kiếm hoặc môn học rồi!"));
 
-  const queryString = queryTitleString.trim().toLowerCase().replace(/\s+/g, "-");
+  const queryString = queryTitleString.trim().toLowerCase().replace(/\s+/g, "\n");
 
   const learning = (await Learning.aggregate()
     .match({
