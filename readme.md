@@ -28,4 +28,8 @@ Use your bot on [Chatfuel](https://chatfuel.com) to connect with REST API.
 
 `/medicine/detail?medicineUrl=...` => Get detail Medicine Information.
 
+`/learning/getTitle?queryTitleString=...&subject=...` => get a new question from a new title
+
+`/learning/getMoreQuestion?title=...&subject=...` => get a new question from exist title
+
 ## No contributing required

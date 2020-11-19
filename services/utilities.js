@@ -26,3 +26,8 @@ module.exports.splitIntoString = (textInput) => {
   } else result.push(textOutput2);
   return result;
 };
+
+module.exports.randomInList = (list) => {
+  const randomIndex = Math.floor(Math.random() * list.length);
+  return list[randomIndex];
+}
